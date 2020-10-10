@@ -78,6 +78,7 @@ export default {
       this.$parent.send_to_terminal = "";
     }
   },
+  // TODO 暴露一个随时停止输入的接口
   methods: {
     history_up() {
       if (this.history_.length) {
@@ -169,20 +170,12 @@ export default {
       }
     },
     output(html) {
-      let reg = /<(?:(?:\/?[A-Za-z]\w*\b(?:[=\s](['"]?)[\s\S]*?\1)*)|(?:!--[\s\S]*?--))\/?>/g;
-      if (
-        html.match(reg) &&
-        html !== '<div class="ls-files">help<br>clear<br>uname</div>'
-      ) {
-        this.$refs.output.insertAdjacentText("beforeEnd", html);
-      } else {
-        this.$refs.output.insertAdjacentHTML(
-          "beforeEnd",
-          "<pre class='out' style='white-space: pre-wrap;word-wrap: break-word;'>" +
-            html +
-            "</pre>"
-        );
-      }
+      this.$refs.output.insertAdjacentHTML(
+        "beforeEnd",
+        "<pre class='out' style='white-space: pre-wrap;word-wrap: break-word;'>" +
+          html +
+          "</pre>"
+      );
       this.value = "";
     }
   }
@@ -206,7 +199,7 @@ output {
 #banner {
   margin-bottom: 3em;
 }
-h2 { 
+h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
