@@ -2,6 +2,7 @@
   "name": "vue-terminal",
   "version": "1.0.0",
   "author": "AITuring",
+  "git": "https://github.com/AITuring/vue-terminal.git",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
