@@ -1,8 +1,15 @@
 {
-  "name": "vue-terminal",
+  "name": "v-terminal",
   "version": "1.0.0",
-  "author": "AITuring",
+  "author": "aituring",
   "git": "https://github.com/AITuring/vue-terminal.git",
+  "keywords": [
+    "vueterminal",
+    "terminal",
+    "term",
+    "vuejs terminal"
+  ],
+  "private": false,
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
@@ -24,7 +31,7 @@
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "## Project setup ``` npm install ```",
+  "description": "A vue terminal plugin",
   "main": "index.js",
   "license": "MIT"
 }
