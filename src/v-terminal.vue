@@ -46,6 +46,10 @@ export default {
     },
     commands: {
       type: Array
+    },
+    disabled: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
@@ -76,9 +80,17 @@ export default {
     shell_input(val) {
       this.output(val);
       this.$parent.send_to_terminal = "";
+    },
+
+    disabled(val) {
+      if (val) {
+        let disableInput = document.getElementsByClassName("cmdline");
+        disableInput.onfocus = () => {
+          disableInput.blur();
+        }
+      }
     }
   },
-  // TODO 暴露一个随时停止输入的接口
   methods: {
     history_up() {
       if (this.history_.length) {
