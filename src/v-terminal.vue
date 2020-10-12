@@ -7,7 +7,6 @@
         </h2>
         <p v-if="banner.subHeader">{{ banner.subHeader }}</p>
         <p v-if="banner.helpHeader">{{ banner.helpHeader }}</p>
-        <p></p>
       </div>
       <output ref="output"></output>
       <div id="input-line" class="input-line" v-if="!notInput">
@@ -20,6 +19,7 @@
           @keydown.down="history_down()"
           @keydown.tab="cmd_tab($event)"
           class="cmdline"
+          autofocus
         />
       </div>
     </div>
@@ -83,7 +83,7 @@ export default {
     },
     notInput: {
       handler(newVal) {
-        this.notInput = newVal
+        this.notInput = newVal;
       },
       immediate: true
     }
@@ -130,8 +130,6 @@ export default {
         this.history_[this.history_.length] = this.value;
         this.histpos_ = this.history_.length;
       }
-
-      //   Duplicate current input and append to output section.
       var line = this.$refs.cmd.parentNode.cloneNode(true);
       line.removeAttribute("id");
       line.classList.add("line");
