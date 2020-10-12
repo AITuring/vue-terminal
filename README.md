@@ -1,27 +1,45 @@
 # vue-terminal
 
-## Project setup
-```
-npm install
-```
+## 📁接口
+#### banner
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+terminal的标题栏，如图所示：
+![](index.png)
 
-### Compiles and minifies for production
+``` typescript
+banner: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          header: "Vue Terminal",
+          subHeader: "Welcome to Vue Terminal",
+          helpHeader: 'Enter "help" for more information.',
+          sign: "Vue-terminal $"
+        };
+      }
+    },
 ```
-npm run build
-```
+#### command
 
-### Lints and fixes files
-```
-npm run lint
-```
+自定义的命令，例如下面定义了uname函数，输入uname即可输出
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```typescript
+commands: any = [
+    {
+      name: 'uname',
+      desc: 'Show the current terminal name',
+      get() {
+        return navigator.appVersion
+      },
+    }
+  ];
+```
+### notInput
 
-//TODO 按上键光标应该在输入的右边，现在在左边
-// TODO 输入光标失去了焦点 high 尽快解决
+控制后端无响应时，前端禁止输入框。notinput是一个boolean值，默认为false，禁止输入时要改为true
+
+
+## 📇TODO
+- 🥈按上键光标应该在输入的右边，现在在左边
+- 🥇输入光标失去了焦点 high 尽快解决
