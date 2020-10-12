@@ -10,7 +10,7 @@
         <p></p>
       </div>
       <output ref="output"></output>
-      <div id="input-line" class="input-line">
+      <div id="input-line" class="input-line" v-if="!notInput">
         <div class="prompt">{{ banner.sign ? banner.sign : ">>" }}</div>
         <input
           v-model="value"
@@ -47,7 +47,7 @@ export default {
     commands: {
       type: Array
     },
-    disabled: {
+    notInput: {
       type: Boolean,
       required: true
     }
@@ -81,14 +81,11 @@ export default {
       this.output(val);
       this.$parent.send_to_terminal = "";
     },
-
-    disabled(val) {
-      if (val) {
-        let disableInput = document.getElementsByClassName("cmdline");
-        disableInput.onfocus = () => {
-          disableInput.blur();
-        }
-      }
+    notInput: {
+      handler(newVal) {
+        this.notInput = newVal
+      },
+      immediate: true
     }
   },
   methods: {
