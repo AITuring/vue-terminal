@@ -4,6 +4,7 @@
 #### banner
 
 terminal的标题栏，如图所示：
+
 ![](index.png)
 
 ``` typescript
