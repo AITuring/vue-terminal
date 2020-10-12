@@ -10,7 +10,9 @@
       </div>
       <output ref="output"></output>
       <div id="input-line" class="input-line" v-if="!notInput">
-        <div class="prompt">{{ banner.sign ? banner.sign : ">>" }}</div>
+        <div class="prompt" v-if="!notInput">
+          {{ banner.sign ? banner.sign : ">>" }}
+        </div>
         <input
           v-model="value"
           ref="cmd"
@@ -20,6 +22,7 @@
           @keydown.tab="cmd_tab($event)"
           class="cmdline"
           autofocus
+          :readOnly="notInput ? true : false"
         />
       </div>
     </div>
